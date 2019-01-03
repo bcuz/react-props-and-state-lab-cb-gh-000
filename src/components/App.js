@@ -15,6 +15,22 @@ class App extends React.Component {
     }
   }
 
+  onChangeType = (newType) => {
+    this.setState({
+      filters: {
+        type: newType
+      }
+      });
+  }
+
+  // onFindPetsClick = (newType) => {
+  //   this.setState({
+  //     filters: {
+  //       type: newType
+  //     }
+  //     });
+  // }
+
   render() {
     return (
       <div className="ui container">
@@ -24,7 +40,7 @@ class App extends React.Component {
         <div className="ui container">
           <div className="ui grid">
             <div className="four wide column">
-              <Filters />
+              <Filters appCallback={this.onChangeType} />
             </div>
             <div className="twelve wide column">
               <PetBrowser />
