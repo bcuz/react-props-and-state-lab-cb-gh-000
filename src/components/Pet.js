@@ -8,7 +8,7 @@ class Pet extends React.Component {
     if (this.props.pet.isAdopted) {
       button = <button className="ui disabled button">Already adopted</button>
     } else {
-      // like its being called and changing everything
+      // prevent from being called right away https://stackoverflow.com/a/37387846
       button = <button onClick={() => this.props.onAdoptPet(this.props.pet.id)} className="ui primary button">Adopt pet</button>
       // button = <button  className="ui primary button">Adopt pet</button>
     }

@@ -11,10 +11,6 @@ class Filters extends React.Component {
 
   handleChange = event => {
 
-    // LF implementing this func.
-    // let val = this.state.selectValue
-    // this should be here.
-
     this.setState({
       selectValue: event.target.value
       });
