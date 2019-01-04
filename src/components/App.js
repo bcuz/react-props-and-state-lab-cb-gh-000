@@ -23,13 +23,25 @@ class App extends React.Component {
       });
   }
 
-  // onFindPetsClick = (newType) => {
-  //   this.setState({
-  //     filters: {
-  //       type: newType
-  //     }
-  //     });
-  // }
+  onFindPetsClick = () => {
+
+    let base = '/api/pets'
+
+    if (this.state.filters.type === 'cat') {
+      base = base + '?type=cat'
+    } else if (this.state.filters.type === 'dog') {
+      base = base + '?type=dog'
+    } else if (this.state.filters.type === 'micropig') {
+      base = base + '?type=micropig'
+    }
+
+    fetch(base)
+  .then(res => res.json())
+  .then(json => {
+    this.setState({ pets: json });
+    console.log(json) 
+  });
+  }
 
   render() {
     return (
@@ -40,10 +52,10 @@ class App extends React.Component {
         <div className="ui container">
           <div className="ui grid">
             <div className="four wide column">
-              <Filters appChangeType={this.onChangeType} />
+              <Filters onChangeType={this.onChangeType} onFindPetsClick={this.onFindPetsClick} />
             </div>
             <div className="twelve wide column">
-              <PetBrowser />
+              <PetBrowser pet={this.state.pets} />
             </div>
           </div>
         </div>
