@@ -8,8 +8,9 @@ class Pet extends React.Component {
     if (this.props.pet.isAdopted) {
       button = <button className="ui disabled button">Already adopted</button>
     } else {
-      // button = <button onClick={this.props.onAdoptPet(this.props.pet.id)} className="ui primary button">Adopt pet</button>
-      button = <button  className="ui primary button">Adopt pet</button>
+      // like its being called and changing everything
+      button = <button onClick={() => this.props.onAdoptPet(this.props.pet.id)} className="ui primary button">Adopt pet</button>
+      // button = <button  className="ui primary button">Adopt pet</button>
     }
 
     return (
@@ -18,7 +19,7 @@ class Pet extends React.Component {
           <a className="header">
             {/*'♀' OR '♂'
             seems right to me. */}
-            {this.props.pet.gender === 'male' ? '♀' :'♂' }
+            {this.props.pet.gender === 'male' ? '♂' :'♀' }
             {this.props.pet.name}
           </a>
           <div className="meta">

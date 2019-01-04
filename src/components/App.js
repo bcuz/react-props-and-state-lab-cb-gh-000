@@ -46,6 +46,7 @@ class App extends React.Component {
   onAdoptPet = idNum => {
     let ids = [...this.state.pets];     // create the copy of state array
     let index = ids.findIndex(x => x.id === idNum);
+    console.log(index)
     ids[index].isAdopted = true            //new value
     this.setState({ ids });            //update the value
   }
