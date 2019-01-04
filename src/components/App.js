@@ -39,8 +39,15 @@ class App extends React.Component {
   .then(res => res.json())
   .then(json => {
     this.setState({ pets: json });
-    console.log(json) 
+    // console.log(json)
   });
+  }
+
+  onAdoptPet = idNum => {
+    let ids = [...this.state.pets];     // create the copy of state array
+    let index = ids.findIndex(x => x.id === idNum);
+    ids[index].isAdopted = true            //new value
+    this.setState({ ids });            //update the value
   }
 
   render() {
@@ -55,7 +62,7 @@ class App extends React.Component {
               <Filters onChangeType={this.onChangeType} onFindPetsClick={this.onFindPetsClick} />
             </div>
             <div className="twelve wide column">
-              <PetBrowser pet={this.state.pets} />
+              <PetBrowser pet={this.state.pets} onAdoptPet={this.onAdoptPet}/>
             </div>
           </div>
         </div>
