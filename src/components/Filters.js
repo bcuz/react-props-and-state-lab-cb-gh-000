@@ -4,19 +4,21 @@ class Filters extends React.Component {
   constructor() {
     super()
 
-    // this.handleChange = this.handleChange.bind(this);
-
     this.state = {
-      selectValue: ''
+      selectValue: 'cat'
     }
   }
 
-  handleChange = () => {
+  handleChange = event => {
 
     // LF implementing this func.
     // let val = this.state.selectValue
     // this should be here.
     // this.props.appChangeType(val)
+
+    this.setState({
+      selectValue: event.target.value
+      });
   }
 
   render() {
